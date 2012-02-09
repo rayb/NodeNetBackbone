@@ -1,0 +1,5 @@
+C:\Dev\NodeNetBackbone\WcfRestService1\bin\WcfRestService1.dll
+C:\Dev\NodeNetBackbone\WcfRestService1\bin\WcfRestService1.pdb
+C:\Dev\NodeNetBackbone\WcfRestService1\obj\Debug\ResolveAssemblyReference.cache
+C:\Dev\NodeNetBackbone\WcfRestService1\obj\Debug\WcfRestService1.dll
+C:\Dev\NodeNetBackbone\WcfRestService1\obj\Debug\WcfRestService1.pdb
