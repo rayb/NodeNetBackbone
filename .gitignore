@@ -1,1 +1,5 @@
 *.suo
+*.pdb
+*.dll
+*.cache
+*.user
