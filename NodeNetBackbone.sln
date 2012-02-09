@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "NodeNet", "http://localhost/NodeNet", "{1A88C1D1-42B4-4508-AC79-DD7CDF35FAE2}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "NodeNet", "http://localhost/NodeNet", "{972EB559-B58A-43C0-BA78-A02633E3C84B}"
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "false"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv2.0"
@@ -27,8 +27,8 @@ Global
 		Debug|Any CPU = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1A88C1D1-42B4-4508-AC79-DD7CDF35FAE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1A88C1D1-42B4-4508-AC79-DD7CDF35FAE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{972EB559-B58A-43C0-BA78-A02633E3C84B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{972EB559-B58A-43C0-BA78-A02633E3C84B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
