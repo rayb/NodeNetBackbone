@@ -25,47 +25,60 @@ Together, this stack will work well together to deliver a single page patient ma
 
 ## High Level API
 
-### AppImages
-AppImages - these will be loaded from the web service and cached on the client the first time a user enters the web site.  This will bring in a set of images used throughout the site. 
+### RegistryPatient
+RegistryPatient stores detail about a patient in the DoctorsTool
 
     get (all): webservice/AppImages
     [
       {
-        AppImageID: 1,
-        Name: "example name",
-        Category: "example category",
-        RegionID: 1,
-        ImageData: ????,
-        ImageMimeType: "image/png"
+        RegistryPatientID: 1,
+        ExternalPatientID: "external-id",
+        LastName: "LastName",
+        FirstName: "FirstName",
+        DOB: "2011-01-01",
+        Gender: "M"
       },
       {
-        AppImageID: 2,
-        Name: "example name",
-        Category: "example category",
-        RegionID: 2,
-        ImageData: ????,
-        ImageMimeType: "image/jpg"
+        RegistryPatientID: 2,
+        ExternalPatientID: "external-id",
+        LastName: "LastName",
+        FirstName: "FirstName",
+        DOB: "2011-01-01",
+        Gender: "F" 
       }
     ]
 
     get (1): webservice/AppImages/:id
     {
-      AppImageID: 1,
-      Name: "example name",
-      Category: "example category",
-      RegionID: 1,
-      ImageData: ????,
-      ImageMimeType: "image/png"
+      RegistryPatientID: 1,
+      ExternalPatientID: "external-id",       
+      LastName: "LastName",
+      FirstName: "FirstName",
+      DOB: "2011-01-01",
+      Gender: "M"
     }
 
 *Fields*
 
-* AppImageID: int
-* Name: string
-* Category string
-* RegionID: int
-* ImageData: image??? binary?
-* ImageMimeType: string (example 'image/jpeg' - 'image/png') 
+* RegistryPatientID: int
+* ExternalPatientID: string
+* LastName: string
+* FirstName: string
+* DOB: Date
+* Gender: string (example 'm', 'f') 
+
+
+    public class RegistryPatient
+     {
+       public int RegistryPatientID { get; set; }
+       public string ExternalPatientID { get; set; }
+       public string LastName { get; set; }
+       public string FirstName { get; set; }
+       public DateTime? DOB { get; set; }
+       public string Gender { get; set; }
+     }
+
+
 
 ### RegistryEvents
 Registry Events will provide a (filtered) list of each patient events 
@@ -140,3 +153,45 @@ Service Lines are the detail of data collected as a bill of materials for each R
 * DisplayName: string
 * RegistryEventID: int
 * ProcedureCodeID: int
+
+### AppImages
+AppImages - these will be loaded from the web service and cached on the client the first time a user enters the web site.  This will bring in a set of images used throughout the site. 
+
+    get (all): webservice/AppImages
+    [
+      {
+        AppImageID: 1,
+        Name: "example name",
+        Category: "example category",
+        RegionID: 1,
+        ImageData: ????,
+        ImageMimeType: "image/png"
+      },
+      {
+        AppImageID: 2,
+        Name: "example name",
+        Category: "example category",
+        RegionID: 2,
+        ImageData: ????,
+        ImageMimeType: "image/jpg"
+      }
+    ]
+
+    get (1): webservice/AppImages/:id
+    {
+      AppImageID: 1,
+      Name: "example name",
+      Category: "example category",
+      RegionID: 1,
+      ImageData: ????,
+      ImageMimeType: "image/png"
+    }
+
+*Fields*
+
+* AppImageID: int
+* Name: string
+* Category string
+* RegionID: int
+* ImageData: image??? binary?
+* ImageMimeType: string (example 'image/jpeg' - 'image/png') 
