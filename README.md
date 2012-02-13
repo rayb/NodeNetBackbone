@@ -1,4 +1,4 @@
-# NodeNetBacbone
+# NodeNetBackbone
 
 ## A Node based web server app for delivering timely patient information
 
