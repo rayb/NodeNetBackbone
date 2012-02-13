@@ -28,7 +28,7 @@ Together, this stack will work well together to deliver a single page patient ma
 ### RegistryPatient
 RegistryPatient stores detail about a patient in the DoctorsTool
 
-    get (all): webservice/AppImages
+    get (all): webservice/RegistryPatients
     [
       {
         RegistryPatientID: 1,
@@ -48,7 +48,7 @@ RegistryPatient stores detail about a patient in the DoctorsTool
       }
     ]
 
-    get (1): webservice/AppImages/:id
+    get (1): webservice/RegistryPatients/:id
     {
       RegistryPatientID: 1,
       ExternalPatientID: "external-id",       
@@ -67,7 +67,6 @@ RegistryPatient stores detail about a patient in the DoctorsTool
 * DOB: Date
 * Gender: string (example 'm', 'f') 
 
-
     public class RegistryPatient
      {
        public int RegistryPatientID { get; set; }
@@ -77,8 +76,6 @@ RegistryPatient stores detail about a patient in the DoctorsTool
        public DateTime? DOB { get; set; }
        public string Gender { get; set; }
      }
-
-
 
 ### RegistryEvents
 Registry Events will provide a (filtered) list of each patient events 
