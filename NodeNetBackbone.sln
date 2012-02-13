@@ -1,25 +1,25 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "NodeNet", "http://localhost/NodeNet", "{972EB559-B58A-43C0-BA78-A02633E3C84B}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "localhost", "http://localhost", "{3DABC3F8-0647-433A-A698-19E126C7BDEA}"
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "false"
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv2.0"
-		Debug.AspNetCompiler.VirtualPath = "/NodeNet"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost"
 		Debug.AspNetCompiler.PhysicalPath = "Web\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\NodeNet\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/NodeNet"
+		Release.AspNetCompiler.VirtualPath = "/localhost"
 		Release.AspNetCompiler.PhysicalPath = "Web\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\NodeNet\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		SlnRelativePath = "C:\Dev\NodeNetBackbone\Web\"
+		SlnRelativePath = "Web\"
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfRestService1", "WcfRestService1\WcfRestService1.csproj", "{E38CB0DE-F50B-42C1-9932-EE22E59C8503}"
@@ -30,10 +30,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{972EB559-B58A-43C0-BA78-A02633E3C84B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{972EB559-B58A-43C0-BA78-A02633E3C84B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{972EB559-B58A-43C0-BA78-A02633E3C84B}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{972EB559-B58A-43C0-BA78-A02633E3C84B}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{3DABC3F8-0647-433A-A698-19E126C7BDEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DABC3F8-0647-433A-A698-19E126C7BDEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DABC3F8-0647-433A-A698-19E126C7BDEA}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DABC3F8-0647-433A-A698-19E126C7BDEA}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{E38CB0DE-F50B-42C1-9932-EE22E59C8503}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E38CB0DE-F50B-42C1-9932-EE22E59C8503}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E38CB0DE-F50B-42C1-9932-EE22E59C8503}.Release|Any CPU.ActiveCfg = Release|Any CPU
