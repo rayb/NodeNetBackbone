@@ -27,6 +27,17 @@ namespace WcfRestService1
             return new List<SampleItem>() { new SampleItem() { Id = 1, StringValue = "Hello" } };
         }
 
+        //[WebGet(UriTemplate = "", ResponseFormat = WebMessageFormat.Json)]
+        //public string GetCollection()
+        //{
+        //    // TODO: Replace the current implementation to return a collection of SampleItem instances
+        //    //return new List<SampleItem>() { new SampleItem() { Id = 1, StringValue = "Hello again" } };
+        //    //return new ServiceResponse {Message = "Hello as Service Response" };
+        //    string foo = "{'name' = 'hello'}";
+        //    return foo;
+        //}
+
+
         [WebInvoke(UriTemplate = "", Method = "POST")]
         public SampleItem Create(SampleItem instance)
         {
