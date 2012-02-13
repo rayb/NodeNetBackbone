@@ -21,3 +21,57 @@ Add:
 * Backbone JS (client side MVC framework)
 
 Together, this stack will work well together to deliver a single page patient management app
+
+
+## High Level API
+
+Objects 
+
+* AppImages
+
+get: webservice/AppImages
+[
+  {
+    AppImageID: 1,
+    Name: "example name",
+    Category: "example category",
+    RegionID: 1,
+    ImageData: ????,
+    ImageMimeType: "image/png"
+  },
+  {
+    AppImageID: 2,
+    Name: "example name",
+    Category: "example category",
+    RegionID: 2,
+    ImageData: ????,
+    ImageMimeType: "image/jpg"
+  }
+]
+
+* AppImageID (int)
+* Name (String)
+* Category (String)
+* RegionID (ID)
+* ImageData (Image)
+* ImageMimeType (string) (image/jpeg - image/png) 
+
+* RegistryEvents
+get: webservice/RegistryEvents
+[
+
+]
+
+* RegistryEventID (int)
+* EventDate (date)
+* ScoapPatientID (int)
+* ScoapDoctorID (int)
+* FacilityID (int)
+
+* ServiceLines
+
+* ServiceLineID (int)
+* LineType (string
+* DisplayName (string)
+* RegistryEventID (int)
+* ProcedureCodeID (int)
