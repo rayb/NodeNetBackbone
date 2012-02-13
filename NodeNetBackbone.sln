@@ -22,7 +22,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "localhost", "http://localho
 		SlnRelativePath = "Web\"
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfRestService1", "WcfRestService1\WcfRestService1.csproj", "{E38CB0DE-F50B-42C1-9932-EE22E59C8503}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfRestService1", "WebService\WcfRestService1.csproj", "{E38CB0DE-F50B-42C1-9932-EE22E59C8503}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
