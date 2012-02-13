@@ -4,3 +4,7 @@
 *.cache
 *.user
 node_modules/
+obj/
+Debug/
+*/obj/
+*/Debug/

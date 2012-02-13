@@ -28,7 +28,7 @@ Together, this stack will work well together to deliver a single page patient ma
 ### AppImages
 AppImages - these will be loaded from the web service and cached on the client the first time a user enters the web site.  This will bring in a set of images used throughout the site. 
 
-    *get (all): webservice/AppImages*
+    get (all): webservice/AppImages
     [
       {
         AppImageID: 1,
@@ -48,7 +48,7 @@ AppImages - these will be loaded from the web service and cached on the client t
       }
     ]
 
-    *get (1): webservice/AppImages/:id
+    get (1): webservice/AppImages/:id
     {
       AppImageID: 1,
       Name: "example name",
@@ -57,10 +57,6 @@ AppImages - these will be loaded from the web service and cached on the client t
       ImageData: ????,
       ImageMimeType: "image/png"
     }
-
-    *new : webservice/AppImages*
-    *update : webservice/AppImages/:id*
-    *delete : webservice/AppImages/:id*
 
 *Fields*
 
@@ -74,7 +70,7 @@ AppImages - these will be loaded from the web service and cached on the client t
 ### RegistryEvents
 Registry Events will provide a (filtered) list of each patient events 
 
-    *get: webservice/RegistryEvents*
+    get: webservice/RegistryEvents
     [
       {
         RegistryEventID: 1,
@@ -92,7 +88,22 @@ Registry Events will provide a (filtered) list of each patient events
       }
     ]    
 
+
+    get (1): webservice/RegistryEvents/:id
+    {
+      RegistryEventID: 2,
+      EventDate: "2011-01-01", # format as UTF?
+      ScoapPatientID: 2,
+      ScoapDoctorID: 2,
+      FacilityID: 
+    }
+
+    new: webservice/RegistryEvents
+    update: webservice/RegistryEvents/:id
+    delete: webservice/RegistryEvents/:id
+
 *Fields*
+
 * RegistryEventID: int
 * EventDate: date
 * ScoapPatientID: int
@@ -123,6 +134,7 @@ Service Lines are the detail of data collected as a bill of materials for each R
     ]    
 
 *Fields*
+
 * ServiceLineID: int
 * LineType: int
 * DisplayName: string
