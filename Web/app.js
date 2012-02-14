@@ -10,15 +10,20 @@ var app = module.exports = express.createServer();
 
 // Configuration
 
-app.configure(function(){
-  app.set('views', __dirname + '/views');
-  app.set('view engine', 'jade');
-  app.use(express.bodyParser());
-  app.use(express.methodOverride());
-  app.use(express.cookieParser());
-  app.use(express.session({ secret: 'your secret here' }));
-  app.use(app.router);
-  app.use(express.static(__dirname + '/public'));
+app.configure(function () {
+    app.set('views', __dirname + '/views');
+    app.set('view engine', 'jade');
+    // TODO can this parse put?
+    app.use(express.bodyParser());
+    app.use(express.methodOverride());
+    app.use(express.cookieParser());
+    app.use(express.session({ secret: 'your secret here' }));
+    app.use(app.router);
+    app.use(express.static(__dirname + '/public'));
+    app.use(express.errorHandler({
+      dumpExceptions: true,
+      showStack: true
+    }));
 });
 
 app.configure('development', function(){
@@ -30,10 +35,54 @@ app.configure('production', function(){
 });
 
 // Routes
-
 app.get('/', routes.index);
 
-app.get('/patients', routes.patients);
+// TODO: Why can't I load another routes file... 
+//app.get('/patients', routes.patients);
+app.get('/patients', function (req, res) {
+  res.render('patients/index', { title: 'Patients'
+    // TODO: get patient data from web service
+    //    , locals: {
+    //    patient: patient
+    //  }
+  });
+});
+
+app.get('/patients/:id', function (req, res) {
+  var patient = patients.find(req.params.id);
+  res.render('patients/show', { title: 'Patients'
+// TODO: get patient data from web service
+//    , locals: {
+//    patient: patient
+//  }
+  });
+});
+
+app.get('/patients/:id/edit', function (req, res) {
+  var patient = patients.find(req.params.id);
+  res.render('products/edit', { locals: {
+    patient: patient
+  }});
+});
+
+app.put('/patients/:id', function (req, res) {
+  var id = req.params.id;
+  // save patient data...
+  redirect('/patients/' + id);
+});
+
+app.get('/patients/new', function (req, res) {
+  //TODO: create an instance of a new object... (backbone?)
+  res.render('patients/new', { title: 'New Patient' 
+  });
+});
+
+app.post('/patients/', function (req, res) {
+  //TODO: save patient data.
+  var product = patients.add(req.body.patient);.
+  redirect('/patients/' + id);
+});
+
 
 app.listen(process.env.PORT);
 
