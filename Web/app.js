@@ -68,7 +68,7 @@ app.get('/patients/:id/edit', function (req, res) {
 app.put('/patients/:id', function (req, res) {
   var id = req.params.id;
   // save patient data...
-  redirect('/patients/' + id);
+  res.redirect('/patients/' + id);
 });
 
 app.get('/patients/new', function (req, res) {
@@ -80,7 +80,7 @@ app.get('/patients/new', function (req, res) {
 app.post('/patients/', function (req, res) {
   //TODO: save patient data.
   var product = patients.add(req.body.patient);.
-  redirect('/patients/' + id);
+  res.redirect('/patients/' + id);
 });
 
 
