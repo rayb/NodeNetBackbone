@@ -1,2 +1,3 @@
-﻿h1 Editing #{patient.name}
-form(action='/patients', method='POST')!= partial('patient_form', {locals: {patient: "patients hash"}})
+﻿h1 New Patient
+form(action='/patients', method='POST')
+  div!= partial('partials/patient', {locals: {patient: "patients hash"}})
