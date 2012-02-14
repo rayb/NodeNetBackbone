@@ -36,7 +36,6 @@ app.configure('production', function(){
 });
 
 
-
 // Routes
 app.get('/', routes.index);
 
