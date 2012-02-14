@@ -1,3 +1,4 @@
 ﻿h1 Editing #{patient.name}
 form(action='/patients/'+patient.id, method='POST')
   input(type='hidden', name='_method', value'PUT')
+  div! = partial('patient_form', {locals: {patient: "patient hash"}})
