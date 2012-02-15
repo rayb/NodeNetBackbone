@@ -6,7 +6,7 @@ class NodeNetBackbone.Routers.RegistryPatients extends Backbone.Router
     '/new'      : 'new'
     '/:id/edit' : 'edit'
 
-  initialize:
+  initialize: ->
     @registry_patients = new NodeNetBackbone.Collections.RegistryPatients()
     @registry_patients.reset($('#container').data('registry_patients'))
 

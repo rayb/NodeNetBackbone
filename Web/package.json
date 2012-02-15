@@ -2,6 +2,10 @@
     "name": "patient-tool"
   , "version": "0.0.1"
   , "private": true
+  , "repository": {
+      "type": "git"
+    , "url": "git@github.com:rayb/NodeNetBackbone.git"
+  }
   , "dependencies": {
       "express": "2.5.8"
     , "coffee-script": "*"
@@ -10,5 +14,6 @@
     , "underscore": "*"
     , "backbone": "*"
     , "jasmine-node": "*"
+    , "nodemon": "*"
   }
 }
