@@ -1,5 +1,5 @@
 (function() {
-  var app, port, routes, ﻿express;
+  var app, port, registry_patients, routes, ﻿express;
 
   ﻿express = require("express");
 
@@ -35,11 +35,16 @@
     return app.use(express.errorHandler());
   });
 
+  registry_patients = require("./registry_patients");
+
   app.get("/", routes.index);
 
   app.get("/patients", function(req, res) {
     return res.render("patients/index", {
-      title: "Patients"
+      locals: {
+        registry_patients: registry_patients.all
+      },
+      title: "Patient List"
     });
   });
 
@@ -76,7 +81,7 @@
   port = process.env.PORT || 3000;
 
   app.listen(port, function() {
-    return console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+    return console.log("Express test server listening on port %d in %s mode", app.address().port, app.settings.env);
   });
 
 }).call(this);

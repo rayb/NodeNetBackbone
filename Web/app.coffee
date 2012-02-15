@@ -24,32 +24,38 @@ app.configure "development", ->
 app.configure "production", ->
   app.use express.errorHandler()
 
-app.get "/", routes.index
-app.get "/patients", (req, res) ->
-  res.render "patients/index",
-    title: "Patients"
+registry_patients = require("./registry_patients")
 
-app.get "/patients/new", (req, res) ->
-  res.render "patients/new",
+app.get "/", routes.index
+
+app.get "/registry_patients", (req, res) ->
+  res.render "registry_patients/index",
+    locals:
+      registry_patients: registry_patients.all
+
+    title: "Patient List"
+
+app.get "/registry_patients/new", (req, res) ->
+  res.render "registry_patients/new",
     title: "New Patient"
 
-app.get "/patients/:id", (req, res) ->
+app.get "/registry_patients/:id", (req, res) ->
   res.render "patients/show",
     title: "Patients"
 
-app.get "/patients/:id/edit", (req, res) ->
-  res.render "patients/edit",
+app.get "/registry_patients/:id/edit", (req, res) ->
+  res.render "registry_patients/edit",
     locals:
       patient: patient
 
-app.put "/patients/:id", (req, res) ->
+app.put "/registry_patients/:id", (req, res) ->
   id = req.params.id
   res.redirect "/patients/" + id
 
-app.post "/patients/", (req, res) ->
-  res.redirect "/patients/" + id
+app.post "/registry_patients/", (req, res) ->
+  res.redirect "/registry_patients/" + id
 
 port = process.env.PORT or 3000
 app.listen port, ->
-  console.log "Express server listening on port %d in %s mode", app.address().port, app.settings.env
+  console.log "Express test server listening on port %d in %s mode", app.address().port, app.settings.env
 
