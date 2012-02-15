@@ -4,9 +4,11 @@ window.NodeNetBackbone =
   Routers: {}
   Views: {}
   init: (options) ->
-    NodeNetBavkbone.options = options
-    window.nodeNetBackbone = new NodeNetBackbone.Routers.PatientsRouter(options)
+    NodeNetBackbone.options = options
+    new NodeNetBackbone.Routers.PatientsRouter(options)
     unless Backbone.history.started
-      Backbone.history.start()
+      Backbone.history.start(pushState: true)
       Backbone.history.started = true
 
+$(document).ready ->
+  NodeNetBackbone.init()
