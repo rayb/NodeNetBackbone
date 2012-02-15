@@ -19,30 +19,14 @@
     };
 
     RegistryPatients.prototype.initialize = function() {
-      this.registry_patients = new NodeNetBackbone.Collections.RegistryPatients();
-      return this.registry_patients.reset($('#container').data('registry_patients'));
+      console.log('init the router');
+      return this.index();
     };
 
     RegistryPatients.prototype.index = function() {
-      var view;
-      view = new NodeNetBackbone.Views.RegistryPatients.Index({
-        collection: this.registry_patients
-      });
-      return $('#container').html(view.render().el);
+      console.log('made it to the route index');
+      return $('#container').html('hello from router');
     };
-
-    RegistryPatients.prototype.show = function(id) {
-      var view;
-      console.log('debug showing patient');
-      this.registry_patient = this.registry_patients.get(id);
-      return view = new NodeNetBackbone.Views.RegistryPatients.Show({
-        model: this.registry_patient
-      });
-    };
-
-    RegistryPatients.prototype["new"] = function() {};
-
-    RegistryPatients.prototype.edit = function(id) {};
 
     return RegistryPatients;
 

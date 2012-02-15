@@ -7,19 +7,23 @@ class NodeNetBackbone.Routers.RegistryPatients extends Backbone.Router
     '/:id/edit' : 'edit'
 
   initialize: ->
-    @registry_patients = new NodeNetBackbone.Collections.RegistryPatients()
-    @registry_patients.reset($('#container').data('registry_patients'))
+    console.log 'init the router'
+    # @registry_patients = new NodeNetBackbone.Collections.RegistryPatients()
+    # @registry_patients.reset($('#container').data('registry_patients'))
+    this.index()
 
   index: ->
-    view = new NodeNetBackbone.Views.RegistryPatients.Index(collection: @registry_patients)
-    $('#container').html(view.render().el)
+    console.log 'made it to the route index'
+    # view = new NodeNetBackbone.Views.RegistryPatients.Index(collection: @registry_patients)
+    $('#container').html('hello from router')
+    # $('#container').html(view.render().el)
 
-  show: (id) ->
-    console.log('debug showing patient')
-    @registry_patient = @registry_patients.get(id)
-    view = new NodeNetBackbone.Views.RegistryPatients.Show(model: @registry_patient)
+  # show: (id) ->
+  #   console.log('debug showing patient')
+  #   @registry_patient = @registry_patients.get(id)
+  #   view = new NodeNetBackbone.Views.RegistryPatients.Show(model: @registry_patient)
 
-  new: ->
+  # new: ->
 
-  edit: (id) ->
+  # edit: (id) ->
 

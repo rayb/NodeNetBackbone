@@ -1,5 +1,7 @@
-class NodeNetBackbone.Views.RegistryPatient extends Backbone.View
-  template: JST['registry_patients/registry_patient']
+NodeNetBackbone.Views.RegistryPatients || = {}
+
+class NodeNetBackbone.Views.RegistryPatients.RegistryPatient extends Backbone.View
+  # template: JST['registry_patients/registry_patient']
   tagName: 'li'
 
   events:

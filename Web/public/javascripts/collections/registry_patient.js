@@ -10,7 +10,7 @@
       RegistryPatients.__super__.constructor.apply(this, arguments);
     }
 
-    RegistryPatients.prototype.url = '/api/registry_patients';
+    RegistryPatients.prototype.url = '/registry_patients';
 
     RegistryPatients.prototype.model = NodeNetBackbone.Models.RegistryPatient;
 

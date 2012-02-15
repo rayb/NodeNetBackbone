@@ -4,8 +4,9 @@ window.NodeNetBackbone =
   Routers: {}
   Views: {}
   init: (options) ->
+    console.log 'made it to init'
     NodeNetBackbone.options = options
-    new NodeNetBackbone.Routers.PatientsRouter(options)
+    new NodeNetBackbone.Routers.RegistryPatients(options)
     unless Backbone.history.started
       Backbone.history.start(pushState: true)
       Backbone.history.started = true

@@ -3,5 +3,13 @@ h1 Patients
 each registry_patient in registry_patients
   .registry_patient
     include partials/registry_patient
+
+h1 Another way to show Patient Data:
+ul#registry_patients
+  - each patient in registry_patients
+    li= patient.first_name
+  
 p
   a(href='/registry_patients/new') New
+
+#container Loading...

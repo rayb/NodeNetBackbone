@@ -1,16 +1,17 @@
 (function() {
-  var __hasProp = Object.prototype.hasOwnProperty,
+  var _base,
+    __hasProp = Object.prototype.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
 
-  NodeNetBackbone.Views.RegistryPatient = (function(_super) {
+  (_base = NodeNetBackbone.Views).RegistryPatients || (_base.RegistryPatients = {});
+
+  NodeNetBackbone.Views.RegistryPatients.RegistryPatient = (function(_super) {
 
     __extends(RegistryPatient, _super);
 
     function RegistryPatient() {
       RegistryPatient.__super__.constructor.apply(this, arguments);
     }
-
-    RegistryPatient.prototype.template = JST['registry_patients/registry_patient'];
 
     RegistryPatient.prototype.tagName = 'li';
 
