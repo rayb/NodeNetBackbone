@@ -16,6 +16,6 @@
 
     return RegistryPatients;
 
-  })(BackboneCollection);
+  })(Backbone.Collection);
 
 }).call(this);

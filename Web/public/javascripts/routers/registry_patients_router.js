@@ -11,7 +11,7 @@
     }
 
     RegistryPatients.prototype.routes = {
-      '': 'index',
+      '.*': 'index',
       '/index': 'index',
       '/:id': 'show',
       '/new': 'new',
