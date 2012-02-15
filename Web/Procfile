@@ -1,6 +1,6 @@
-coffee: cake watch
-/* web: nodemon app.js */
-node: node app.js
+/* coffee: cake watch */
+web: nodemon app.coffee
+/* node: node app.js */
 jasmine: jasmine-node --color --autotest --coffee --verbose spec
 
 
