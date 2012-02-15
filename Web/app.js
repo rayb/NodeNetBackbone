@@ -39,8 +39,8 @@
 
   app.get("/", routes.index);
 
-  app.get("/patients", function(req, res) {
-    return res.render("patients/index", {
+  app.get("/registry_patients", function(req, res) {
+    return res.render("registry_patients/index", {
       locals: {
         registry_patients: registry_patients.all
       },
@@ -48,34 +48,34 @@
     });
   });
 
-  app.get("/patients/new", function(req, res) {
-    return res.render("patients/new", {
+  app.get("/registry_patients/new", function(req, res) {
+    return res.render("registry_patients/new", {
       title: "New Patient"
     });
   });
 
-  app.get("/patients/:id", function(req, res) {
+  app.get("/registry_patients/:id", function(req, res) {
     return res.render("patients/show", {
       title: "Patients"
     });
   });
 
-  app.get("/patients/:id/edit", function(req, res) {
-    return res.render("patients/edit", {
+  app.get("/registry_patients/:id/edit", function(req, res) {
+    return res.render("registry_patients/edit", {
       locals: {
         patient: patient
       }
     });
   });
 
-  app.put("/patients/:id", function(req, res) {
+  app.put("/registry_patients/:id", function(req, res) {
     var id;
     id = req.params.id;
     return res.redirect("/patients/" + id);
   });
 
-  app.post("/patients/", function(req, res) {
-    return res.redirect("/patients/" + id);
+  app.post("/registry_patients/", function(req, res) {
+    return res.redirect("/registry_patients/" + id);
   });
 
   port = process.env.PORT || 3000;
