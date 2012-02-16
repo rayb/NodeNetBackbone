@@ -39,6 +39,10 @@
 
   app.get("/", routes.index);
 
+  app.get("/api/registry_patients", function(req, res) {
+    return res.json(registry_patients.all);
+  });
+
   app.get("/registry_patients", function(req, res) {
     return res.render("registry_patients/index", {
       locals: {
