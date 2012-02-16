@@ -28,9 +28,10 @@
     };
 
     RegistryPatient.prototype.render = function() {
-      $(this.el).html(this.template({
-        registry_patient: this.model
-      }));
+      var template_html;
+      console.log("rending a detail item");
+      template_html = JST['registry_patients/registry_patient'](this.model.attributes);
+      $(this.el).html(template_html);
       return this;
     };
 

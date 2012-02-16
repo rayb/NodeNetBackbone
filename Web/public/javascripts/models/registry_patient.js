@@ -10,17 +10,6 @@
       RegistryPatient.__super__.constructor.apply(this, arguments);
     }
 
-    RegistryPatient.prototype.paramRoot = 'registry_patient';
-
-    RegistryPatient.prototype.defaults = {
-      registry_patient_id: null,
-      external_patient_id: null,
-      last_name: null,
-      first_name: null,
-      date_of_birth: null,
-      gender: null
-    };
-
     return RegistryPatient;
 
   })(Backbone.Model);

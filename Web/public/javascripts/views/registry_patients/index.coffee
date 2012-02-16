@@ -2,8 +2,6 @@ NodeNetBackbone.Views.RegistryPatients || = {}
 
 class NodeNetBackbone.Views.RegistryPatients.Index extends Backbone.View
   template: JST["registry_patients/index"]()
-  # template: EJS({url: 'registry_patients/index.ejs'}).render()
-  # html = new EJS({url: '/template.ejs'}).render(data)
 
   # events:
   #   'submit #new_registry_patient': 'createRegistryPatient'
@@ -14,16 +12,18 @@ class NodeNetBackbone.Views.RegistryPatients.Index extends Backbone.View
     @collection.on('add', @addOne, this)
 
   render: ->
-    # template = "<h1>Patients V3 (Backbone) </h1>" 
-    # eco.render(template)
-    template_html = JST['registry_patients/index']()  
+    console.log "rendering index..."
+    template_html = JST['registry_patients/index']()
     $(@el).html(template_html)
-    @addAll()
-    @
+    # @addAll()
+    @collection.each(@addOne)
+    this
 
   addAll: () =>
     @collection.each(@addOne)
 
   addOne: (registry_patient) =>
+    console.log "adding one patient view"
+    console.log "registry patient: " + registry_patient.get('first_name')
     view = new NodeNetBackbone.Views.RegistryPatients.RegistryPatient({model: registry_patient})
-    @$('tbody').append(view.render().el)
+    @$('#registry_patients').append(view.render().el)

@@ -11,6 +11,7 @@
     }
 
     RegistryPatients.prototype.routes = {
+      '': 'index',
       '.*': 'index',
       '/index': 'index',
       '/:id': 'show',
@@ -21,7 +22,8 @@
     RegistryPatients.prototype.initialize = function() {
       console.log('init the router');
       this.registry_patients = new NodeNetBackbone.Collections.RegistryPatients();
-      this.registry_patients.reset($('#container').data('registry_patients'));
+      this.registry_patients.model = NodeNetBackbone.Models.RegistryPatient;
+      this.registry_patients.fetch();
       return this.index();
     };
 

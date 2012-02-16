@@ -1,5 +1,6 @@
 class NodeNetBackbone.Routers.RegistryPatients extends Backbone.Router
   routes:
+    ''          : 'index'
     '.*'        : 'index'
     '/index'    : 'index'
     '/:id'      : 'show'
@@ -9,7 +10,12 @@ class NodeNetBackbone.Routers.RegistryPatients extends Backbone.Router
   initialize: ->
     console.log 'init the router'
     @registry_patients = new NodeNetBackbone.Collections.RegistryPatients()
-    @registry_patients.reset($('#container').data('registry_patients'))
+    # TODO: Figure out why this isn't sticking...
+    @registry_patients.model = NodeNetBackbone.Models.RegistryPatient
+    # TODO: Try to only round trip once on initial load
+    # @registry_patients.reset($('#container_data').attr('data'))
+    @registry_patients.fetch()
+
     # TODO: SSI - why are the routes not getting processed?
     this.index()
 

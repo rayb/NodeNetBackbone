@@ -1,7 +1,6 @@
 NodeNetBackbone.Views.RegistryPatients || = {}
 
 class NodeNetBackbone.Views.RegistryPatients.RegistryPatient extends Backbone.View
-  # template: JST['registry_patients/registry_patient']
   tagName: 'li'
 
   events:
@@ -14,5 +13,7 @@ class NodeNetBackbone.Views.RegistryPatients.RegistryPatient extends Backbone.Vi
     Backbone.history.navigate('')
 
   render: ->
-    $(@el).html(@template(registry_patient: @model))
+    console.log "rending a detail item"
+    template_html = JST['registry_patients/registry_patient'](@model.attributes)
+    $(@el).html(template_html)
     this

@@ -7,8 +7,7 @@
     Views: {},
     init: function(options) {
       console.log('made it to init');
-      NodeNetBackbone.options = options;
-      new NodeNetBackbone.Routers.RegistryPatients(options);
+      new NodeNetBackbone.Routers.RegistryPatients();
       if (!Backbone.history.started) {
         Backbone.history.start({
           pushState: true

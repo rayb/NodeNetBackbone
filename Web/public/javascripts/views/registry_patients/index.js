@@ -25,9 +25,10 @@
 
     Index.prototype.render = function() {
       var template_html;
+      console.log("rendering index...");
       template_html = JST['registry_patients/index']();
       $(this.el).html(template_html);
-      this.addAll();
+      this.collection.each(this.addOne);
       return this;
     };
 
@@ -37,10 +38,12 @@
 
     Index.prototype.addOne = function(registry_patient) {
       var view;
+      console.log("adding one patient view");
+      console.log("registry patient: " + registry_patient.get('first_name'));
       view = new NodeNetBackbone.Views.RegistryPatients.RegistryPatient({
         model: registry_patient
       });
-      return this.$('tbody').append(view.render().el);
+      return this.$('#registry_patients').append(view.render().el);
     };
 
     return Index;
