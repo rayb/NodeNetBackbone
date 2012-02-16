@@ -28,6 +28,9 @@ registry_patients = require("./registry_patients")
 
 app.get "/", routes.index
 
+app.get "/api/registry_patients", (req, res) ->
+  res.json registry_patients.all
+
 app.get "/registry_patients", (req, res) ->
   res.render "registry_patients/index",
     locals:
