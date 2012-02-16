@@ -20,12 +20,18 @@
 
     RegistryPatients.prototype.initialize = function() {
       console.log('init the router');
+      this.registry_patients = new NodeNetBackbone.Collections.RegistryPatients();
+      this.registry_patients.reset($('#container').data('registry_patients'));
       return this.index();
     };
 
     RegistryPatients.prototype.index = function() {
+      var view;
       console.log('made it to the route index');
-      return $('#container').html('hello from router');
+      view = new NodeNetBackbone.Views.RegistryPatients.Index({
+        collection: this.registry_patients
+      });
+      return $('#container').html(view.render().el);
     };
 
     return RegistryPatients;

@@ -1,10 +1,12 @@
 NodeNetBackbone.Views.RegistryPatients || = {}
 
 class NodeNetBackbone.Views.RegistryPatients.Index extends Backbone.View
-  # template: JST["registry_patients/index"]
+  template: JST["registry_patients/index"]()
+  # template: EJS({url: 'registry_patients/index.ejs'}).render()
+  # html = new EJS({url: '/template.ejs'}).render(data)
 
-  events:
-    'submit #new_registry_patient': 'createRegistryPatient'
+  # events:
+  #   'submit #new_registry_patient': 'createRegistryPatient'
 
   initialize: ->
     # TODO: Notice difference between railscasts approach and rails-backbone gem approach
@@ -12,11 +14,12 @@ class NodeNetBackbone.Views.RegistryPatients.Index extends Backbone.View
     @collection.on('add', @addOne, this)
 
   render: ->
-    template = "hello from inedex template text" 
-    eco.render(template)
-    # $(@el).html(@template(registry_patients: @collection.toJSON() ))
-    # @addAll()
-    # @
+    # template = "<h1>Patients V3 (Backbone) </h1>" 
+    # eco.render(template)
+    template_html = JST['registry_patients/index']()  
+    $(@el).html(template_html)
+    @addAll()
+    @
 
   addAll: () =>
     @collection.each(@addOne)

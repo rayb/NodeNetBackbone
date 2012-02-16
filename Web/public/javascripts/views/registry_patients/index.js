@@ -16,9 +16,7 @@
       Index.__super__.constructor.apply(this, arguments);
     }
 
-    Index.prototype.events = {
-      'submit #new_registry_patient': 'createRegistryPatient'
-    };
+    Index.prototype.template = JST["registry_patients/index"]();
 
     Index.prototype.initialize = function() {
       this.collection.on('reset', this.render, this);
@@ -26,9 +24,11 @@
     };
 
     Index.prototype.render = function() {
-      var template;
-      template = "hello from inedex template text";
-      return eco.render(template);
+      var template_html;
+      template_html = JST['registry_patients/index']();
+      $(this.el).html(template_html);
+      this.addAll();
+      return this;
     };
 
     Index.prototype.addAll = function() {

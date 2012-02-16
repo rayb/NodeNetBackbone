@@ -8,16 +8,16 @@ class NodeNetBackbone.Routers.RegistryPatients extends Backbone.Router
 
   initialize: ->
     console.log 'init the router'
-    # @registry_patients = new NodeNetBackbone.Collections.RegistryPatients()
-    # @registry_patients.reset($('#container').data('registry_patients'))
+    @registry_patients = new NodeNetBackbone.Collections.RegistryPatients()
+    @registry_patients.reset($('#container').data('registry_patients'))
     # TODO: SSI - why are the routes not getting processed?
     this.index()
 
   index: ->
     console.log 'made it to the route index'
-    # view = new NodeNetBackbone.Views.RegistryPatients.Index(collection: @registry_patients)
-    $('#container').html('hello from router')
-    # $('#container').html(view.render().el)
+    view = new NodeNetBackbone.Views.RegistryPatients.Index(collection: @registry_patients)
+    # $('#container').html('<h1>Patients V3: (Backbone):</h1>')
+    $('#container').html(view.render().el)
 
   # show: (id) ->
   #   console.log('debug showing patient')
