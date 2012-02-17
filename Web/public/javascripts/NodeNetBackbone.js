@@ -5,13 +5,11 @@
     Collections: {},
     Routers: {},
     Views: {},
-    init: function(options) {
+    init: function() {
       console.log('made it to init');
-      new NodeNetBackbone.Routers.RegistryPatients();
+      window.nodeNetBackbone = new NodeNetBackbone.Routers.RegistryPatients();
       if (!Backbone.history.started) {
-        Backbone.history.start({
-          pushState: true
-        });
+        Backbone.history.start();
         return Backbone.history.started = true;
       }
     }

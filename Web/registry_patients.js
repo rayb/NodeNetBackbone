@@ -19,6 +19,16 @@
     }
   ];
 
+  ({
+    find: function(id) {
+      var registry_patient, _i, _len;
+      for (_i = 0, _len = registry_patients.length; _i < _len; _i++) {
+        registry_patient = registry_patients[_i];
+        if (registry_patient.id === id) return registry_patient;
+      }
+    }
+  });
+
   module.exports.all = registry_patients;
 
 }).call(this);

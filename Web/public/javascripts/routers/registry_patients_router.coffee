@@ -1,10 +1,10 @@
 class NodeNetBackbone.Routers.RegistryPatients extends Backbone.Router
   routes:
+    "/new"      : "newPatient"
     ''          : 'index'
     '.*'        : 'index'
     '/index'    : 'index'
     '/:id'      : 'show'
-    '/new'      : 'new'
     '/:id/edit' : 'edit'
 
   initialize: ->
@@ -25,12 +25,10 @@ class NodeNetBackbone.Routers.RegistryPatients extends Backbone.Router
     # $('#container').html('<h1>Patients V3: (Backbone):</h1>')
     $('#container').html(view.render().el)
 
-  # show: (id) ->
-  #   console.log('debug showing patient')
-  #   @registry_patient = @registry_patients.get(id)
-  #   view = new NodeNetBackbone.Views.RegistryPatients.Show(model: @registry_patient)
-
-  # new: ->
+  newPatient: ->
+    console.log "in the new"
+    view = new NodeNetBackbone.Views.RegistryPatients.New (collection: @registry_patients)
+    $("#container").html(view.render().el)
 
   # edit: (id) ->
 

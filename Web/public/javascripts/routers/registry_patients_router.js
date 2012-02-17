@@ -11,11 +11,11 @@
     }
 
     RegistryPatients.prototype.routes = {
+      "/new": "newPatient",
       '': 'index',
       '.*': 'index',
       '/index': 'index',
       '/:id': 'show',
-      '/new': 'new',
       '/:id/edit': 'edit'
     };
 
@@ -34,6 +34,15 @@
         collection: this.registry_patients
       });
       return $('#container').html(view.render().el);
+    };
+
+    RegistryPatients.prototype.newPatient = function() {
+      var view;
+      console.log("in the new");
+      view = new NodeNetBackbone.Views.RegistryPatients.New({
+        collection: this.registry_patients
+      });
+      return $("#container").html(view.render().el);
     };
 
     return RegistryPatients;

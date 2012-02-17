@@ -16,8 +16,6 @@
       Index.__super__.constructor.apply(this, arguments);
     }
 
-    Index.prototype.template = JST["registry_patients/index"]();
-
     Index.prototype.initialize = function() {
       this.collection.on('reset', this.render, this);
       return this.collection.on('add', this.addOne, this);

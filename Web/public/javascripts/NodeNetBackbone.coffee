@@ -3,12 +3,13 @@ window.NodeNetBackbone =
   Collections: {}
   Routers: {}
   Views: {}
-  init: (options) ->
+  init: () ->
     console.log 'made it to init'
-    new NodeNetBackbone.Routers.RegistryPatients()
+    window.nodeNetBackbone = new NodeNetBackbone.Routers.RegistryPatients()
     unless Backbone.history.started
-      Backbone.history.start(pushState: true)
+      Backbone.history.start()
       Backbone.history.started = true
 
 $(document).ready ->
+  # console.log "doc ready"
   NodeNetBackbone.init()

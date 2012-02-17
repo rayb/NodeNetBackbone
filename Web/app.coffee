@@ -10,10 +10,6 @@ app.configure ->
   app.use express.session(secret: "your secret here")
   app.use app.router
   app.use express.static(__dirname + "/public")
-  app.use express.errorHandler(
-    dumpExceptions: true
-    showStack: true
-  )
 
 app.configure "development", ->
   app.use express.errorHandler(
@@ -47,6 +43,7 @@ app.get "/registry_patients/:id", (req, res) ->
     title: "Patients"
 
 app.get "/registry_patients/:id/edit", (req, res) ->
+  patient = registry_patients.find(id)
   res.render "registry_patients/edit",
     locals:
       patient: patient

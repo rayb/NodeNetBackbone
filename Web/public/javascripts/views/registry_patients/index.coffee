@@ -1,7 +1,7 @@
 NodeNetBackbone.Views.RegistryPatients || = {}
 
 class NodeNetBackbone.Views.RegistryPatients.Index extends Backbone.View
-  template: JST["registry_patients/index"]()
+  # template: JST["registry_patients/index"]()
 
   # events:
   #   'submit #new_registry_patient': 'createRegistryPatient'

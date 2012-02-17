@@ -1,7 +1,7 @@
 ﻿
-h1 Patients V1 (Plain Jade):
+h1 XPatients V1 (Plain Jade):
 ul#registry_patients
-  - each patient in registry_patients
+  each patient in registry_patients
     p
       li= patient.first_name
 p
@@ -10,7 +10,7 @@ p
 h1 Patients V2 (Jade Partials):
 ul#registry_patient
   each registry_patient in registry_patients
-    include partials/registry_patient
+    include _registry_patient
 p
   a(href='/registry_patients/new') New
 

@@ -17,11 +17,7 @@
       secret: "your secret here"
     }));
     app.use(app.router);
-    app.use(express.static(__dirname + "/public"));
-    return app.use(express.errorHandler({
-      dumpExceptions: true,
-      showStack: true
-    }));
+    return app.use(express.static(__dirname + "/public"));
   });
 
   app.configure("development", function() {
@@ -65,6 +61,8 @@
   });
 
   app.get("/registry_patients/:id/edit", function(req, res) {
+    var patient;
+    patient = registry_patients.find(id);
     return res.render("registry_patients/edit", {
       locals: {
         patient: patient

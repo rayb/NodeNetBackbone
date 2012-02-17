@@ -14,5 +14,14 @@ registry_patients = [
   gender: "f"
 ]
 
+find: (id) ->
+  for registry_patient in registry_patients
+  # registry_patients.each |registry_patient|
+    if registry_patient.id == id
+      return registry_patient
+
+
 module.exports.all = registry_patients
+
+
 
