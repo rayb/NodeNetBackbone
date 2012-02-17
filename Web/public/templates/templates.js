@@ -8,8 +8,8 @@ window.JST['registry_patients/registry_patient'] = _.template(
   "<p><%= first_name %>"
 );
 
-window.JST['registry_patients/new'] = _.template(
-  "hello from new template"
-);
+// window.JST['registry_patients/new'] = _.template(
+//   "hello from new template"
+// );
 
 
