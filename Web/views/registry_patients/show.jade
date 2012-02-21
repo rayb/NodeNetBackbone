@@ -1,7 +1,7 @@
-﻿-# h2= patient.name
-h2= "name"
+﻿
+h2= registry_patient.last_name
+p First Name: #{registry_patient.first_name}
 p
-  a(href='/patients') Back
+  a(href='/registry_patients') Back
 p
-  a(href='/patients/'+1+'/edit') Edit
-  -# a(href='/patients/'+patient.id+'/edit') Edit
+  a(href='/registry_patients/'+registry_patient.registry_patient_id+'/edit') Edit

@@ -40,6 +40,7 @@
   });
 
   app.get("/registry_patients", function(req, res) {
+    console.log("in the registry paitents index");
     return res.render("registry_patients/index", {
       locals: {
         registry_patients: registry_patients.all
@@ -50,34 +51,46 @@
 
   app.get("/registry_patients/new", function(req, res) {
     return res.render("registry_patients/new", {
+      locals: {
+        registry_patient: registry_patients["new"]
+      },
       title: "New Patient"
     });
   });
 
   app.get("/registry_patients/:id", function(req, res) {
-    return res.render("patients/show", {
-      title: "Patients"
+    var patient;
+    console.log("looking for patient with id: " + req.params.id);
+    patient = registry_patients.find(req.params.id);
+    return res.render("registry_patients/show", {
+      locals: {
+        registry_patient: patient
+      },
+      title: "Patient Detail"
     });
   });
 
   app.get("/registry_patients/:id/edit", function(req, res) {
     var patient;
-    patient = registry_patients.find(id);
+    patient = registry_patients.find(req.params.id);
     return res.render("registry_patients/edit", {
       locals: {
-        patient: patient
-      }
+        registry_patient: patient
+      },
+      title: "Edit Patient"
     });
   });
 
   app.put("/registry_patients/:id", function(req, res) {
     var id;
-    id = req.params.id;
-    return res.redirect("/patients/" + id);
+    id = registry_patients.set(req.params.id, req.body.registry_patient);
+    return res.redirect("/registry_patients/");
   });
 
   app.post("/registry_patients/", function(req, res) {
-    return res.redirect("/registry_patients/" + id);
+    var id;
+    id = registry_patients.insert(req.body.registry_patient);
+    return res.redirect("/registry_patients/");
   });
 
   port = process.env.PORT || 3000;

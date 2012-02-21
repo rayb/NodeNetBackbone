@@ -1,3 +1,4 @@
-﻿h1 New Patient
-form(action='/patients', method='POST')
-  div!= partial('partials/patient', {locals: {patient: "patients hash"}})
+﻿
+h1 New Patient
+form(action='/registry_patients/', method='POST')
+  div!= partial('form', {locals: {registry_patient: registry_patient }})

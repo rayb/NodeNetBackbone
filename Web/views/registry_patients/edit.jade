@@ -1,4 +1,5 @@
-﻿h1 Editing #{patient.name}
-form(action='/patients/'+patient.id, method='POST')
-  input(type='hidden', name='_method', value'PUT')
-  div! = partial('patient_form', {locals: {patient: "patient hash"}})
+﻿
+h1 Editing #{registry_patient.first_name}
+form(action='/registry_patients/'+registry_patient.registry_patient_id, method='POST')
+  input(type='hidden', name='_method', value='PUT')
+  div!= partial('_form', {locals: {registry_patient: registry_patient}})
