@@ -54,9 +54,9 @@
 
   module.exports.insert = function(registry_patient) {
     var id;
-    id = registry_patients.length;
+    id = registry_patients.length + 1;
     registry_patient.registry_patient_id = id;
-    registry_patients[id] = registry_patient;
+    registry_patients.push(registry_patient);
     return id;
   };
 
