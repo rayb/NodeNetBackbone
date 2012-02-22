@@ -17,14 +17,26 @@ namespace RegistryToolSvc
     // NOTE: If the service is renamed, remember to update the global.asax.cs file
     public class RegistryPatient
     {
-        // TODO: Implement the collection resource that will contain the SampleItem instances
-
-        [WebGet(UriTemplate = "")]
-        public List<SampleItem> GetCollection()
+        // using http://www.codeproject.com/Articles/327420/WCF-REST-Service-with-JSON as a template
+        // http://msdn.microsoft.com/en-us/library/ee391967.aspx
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "", RequestFormat = WebMessageFormat.Json,
+                   ResponseFormat = WebMessageFormat.Json)]
+        public RegistryPatientObject List()
         {
-            // TODO: Replace the current implementation to return a collection of SampleItem instances
-            return new List<SampleItem>() { new SampleItem() { Id = 1, StringValue = "Hello" } };
+            return new RegistryPatientObject()
+                {
+                    first_name = "hello",
+                    last_name = "world"
+                };
         }
+
+        //[WebGet(UriTemplate = "", ResponseFormat = WebMessageFormat.Json)]
+        //public List<SampleItem> GetCollection()
+        //{
+        //    // TODO: Replace the current implementation to return a collection of SampleItem instances
+        //    return new List<SampleItem>() { new SampleItem() { Id = 1, StringValue = "Hello From List" } };
+        //}
 
         [WebInvoke(UriTemplate = "", Method = "POST")]
         public SampleItem Create(SampleItem instance)
@@ -54,5 +66,10 @@ namespace RegistryToolSvc
             throw new NotImplementedException();
         }
 
+    }
+    public class RegistryPatientObject
+    {
+        public string last_name { get; set; }
+        public string first_name { get; set; }
     }
 }
