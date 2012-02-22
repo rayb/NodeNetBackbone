@@ -1,89 +1,102 @@
+(function() {
+  var app, port, registry_patients, routes, ﻿express;
 
-/**
- * Module dependencies.
- */
+  ﻿express = require("express");
 
-var express = require('express')
-  , routes = require('./routes');
+  routes = require("./routes");
 
-var app = module.exports = express.createServer();
+  app = module.exports = express.createServer();
 
-// Configuration
-
-app.configure(function () {
-    app.set('views', __dirname + '/views');
-    app.set('view engine', 'jade');
-    // TODO can this parse put?
+  app.configure(function() {
+    app.set("views", __dirname + "/views");
+    app.set("view engine", "jade");
     app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.use(express.cookieParser());
-    app.use(express.session({ secret: 'your secret here' }));
+    app.use(express.session({
+      secret: "your secret here"
+    }));
     app.use(app.router);
-    app.use(express.static(__dirname + '/public'));
-    app.use(express.errorHandler({
+    return app.use(express.static(__dirname + "/public"));
+  });
+
+  app.configure("development", function() {
+    return app.use(express.errorHandler({
       dumpExceptions: true,
       showStack: true
     }));
-});
-
-app.configure('development', function(){
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-});
-
-app.configure('production', function(){
-  app.use(express.errorHandler());
-});
-
-// Routes
-app.get('/', routes.index);
-
-// TODO: Why can't I load another routes file... 
-//app.get('/patients', routes.patients);
-app.get('/patients', function (req, res) {
-  res.render('patients/index', { title: 'Patients'
-    // TODO: get patient data from web service
-    //    , locals: {
-    //    patient: patient
-    //  }
   });
-});
 
-app.get('/patients/:id', function (req, res) {
-  var patient = patients.find(req.params.id);
-  res.render('patients/show', { title: 'Patients'
-// TODO: get patient data from web service
-//    , locals: {
-//    patient: patient
-//  }
+  app.configure("production", function() {
+    return app.use(express.errorHandler());
   });
-});
 
-app.get('/patients/:id/edit', function (req, res) {
-  var patient = patients.find(req.params.id);
-  res.render('products/edit', { locals: {
-    patient: patient
-  }});
-});
+  registry_patients = require("./registry_patients");
 
-app.put('/patients/:id', function (req, res) {
-  var id = req.params.id;
-  // save patient data...
-  res.redirect('/patients/' + id);
-});
+  app.get("/", routes.index);
 
-app.get('/patients/new', function (req, res) {
-  //TODO: create an instance of a new object... (backbone?)
-  res.render('patients/new', { title: 'New Patient' 
+  app.get("/api/registry_patients", function(req, res) {
+    return res.json(registry_patients.all);
   });
-});
 
-app.post('/patients/', function (req, res) {
-  //TODO: save patient data.
-  var product = patients.add(req.body.patient);.
-  res.redirect('/patients/' + id);
-});
+  app.get("/registry_patients", function(req, res) {
+    console.log("in the registry paitents index");
+    return res.render("registry_patients/index", {
+      locals: {
+        registry_patients: registry_patients.all
+      },
+      title: "Patient List"
+    });
+  });
 
+  app.get("/registry_patients/new", function(req, res) {
+    return res.render("registry_patients/new", {
+      locals: {
+        registry_patient: registry_patients["new"]
+      },
+      title: "New Patient"
+    });
+  });
 
-app.listen(process.env.PORT);
+  app.get("/registry_patients/:id", function(req, res) {
+    var patient;
+    console.log("looking for patient with id: " + req.params.id);
+    patient = registry_patients.find(req.params.id);
+    return res.render("registry_patients/show", {
+      locals: {
+        registry_patient: patient
+      },
+      title: "Patient Detail"
+    });
+  });
 
-console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+  app.get("/registry_patients/:id/edit", function(req, res) {
+    var patient;
+    patient = registry_patients.find(req.params.id);
+    return res.render("registry_patients/edit", {
+      locals: {
+        registry_patient: patient
+      },
+      title: "Edit Patient"
+    });
+  });
+
+  app.put("/registry_patients/:id", function(req, res) {
+    var id;
+    id = registry_patients.set(req.params.id, req.body.registry_patient);
+    return res.redirect("/registry_patients/");
+  });
+
+  app.post("/registry_patients/", function(req, res) {
+    var id;
+    id = registry_patients.insert(req.body.registry_patient);
+    return res.redirect("/registry_patients/");
+  });
+
+  port = process.env.PORT || 3000;
+
+  app.listen(port, function() {
+    return console.log("Express test server listening on port %d in %s mode", app.address().port, app.settings.env);
+  });
+
+}).call(this);
