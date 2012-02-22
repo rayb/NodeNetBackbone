@@ -3,7 +3,7 @@ using System.ServiceModel.Activation;
 using System.Web;
 using System.Web.Routing;
 
-namespace WcfRestService1
+namespace RegistryToolSvc
 {
     public class Global : HttpApplication
     {
@@ -15,7 +15,7 @@ namespace WcfRestService1
         private void RegisterRoutes()
         {
             // Edit the base address of Service1 by replacing the "Service1" string below
-            RouteTable.Routes.Add(new ServiceRoute("Service1", new WebServiceHostFactory(), typeof(Service1)));
+            RouteTable.Routes.Add(new ServiceRoute("RegistryPatient", new WebServiceHostFactory(), typeof(RegistryPatient)));
         }
     }
 }

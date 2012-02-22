@@ -6,7 +6,7 @@ using System.ServiceModel.Activation;
 using System.ServiceModel.Web;
 using System.Text;
 
-namespace WcfRestService1
+namespace RegistryToolSvc
 {
     // Start the service and browse to http://<machine_name>:<port>/Service1/help to view the service's generated help page
     // NOTE: By default, a new instance of the service is created for each call; change the InstanceContextMode to Single if you want
@@ -15,28 +15,16 @@ namespace WcfRestService1
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall)]
     // NOTE: If the service is renamed, remember to update the global.asax.cs file
-    public class Service1
+    public class RegistryPatient
     {
         // TODO: Implement the collection resource that will contain the SampleItem instances
 
-        [WebGet(UriTemplate = "", ResponseFormat = WebMessageFormat.Json)]
+        [WebGet(UriTemplate = "")]
         public List<SampleItem> GetCollection()
-
         {
             // TODO: Replace the current implementation to return a collection of SampleItem instances
             return new List<SampleItem>() { new SampleItem() { Id = 1, StringValue = "Hello" } };
         }
-
-        //[WebGet(UriTemplate = "", ResponseFormat = WebMessageFormat.Json)]
-        //public string GetCollection()
-        //{
-        //    // TODO: Replace the current implementation to return a collection of SampleItem instances
-        //    //return new List<SampleItem>() { new SampleItem() { Id = 1, StringValue = "Hello again" } };
-        //    //return new ServiceResponse {Message = "Hello as Service Response" };
-        //    string foo = "{'name' = 'hello'}";
-        //    return foo;
-        //}
-
 
         [WebInvoke(UriTemplate = "", Method = "POST")]
         public SampleItem Create(SampleItem instance)
