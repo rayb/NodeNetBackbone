@@ -39,8 +39,8 @@ module.exports.new = ->
   gender: ""
 
 module.exports.insert = (registry_patient) ->
-  id = registry_patients.length
+  id = registry_patients.length + 1
   registry_patient.registry_patient_id = id
-  registry_patients[id] = registry_patient
+  registry_patients.push registry_patient
   id
 
