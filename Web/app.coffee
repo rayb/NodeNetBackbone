@@ -26,7 +26,13 @@ registry_patients = require("./registry_patients")
 app.get "/", routes.index
 
 app.get "/api/registry_patients", (req, res) ->
-  res.json registry_patients.all
+  registry_patients.list ((content) ->
+    res.json content
+  )
+
+app.post "/api/registry_patients", (req, res) ->
+  console.log "in the api for post" + req
+  registry_patients.create(req.body.registry_patient)
 
 app.get "/registry_patients", (req, res) ->
   console.log "in the registry paitents index"

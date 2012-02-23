@@ -11,6 +11,7 @@
     , "ejs": "*"
     , "coffee-script": "*"
     , "sass": ">= 0.0.1"
+    , "json": "*"
     , "jade": ">= 0.0.1"
     , "underscore": "*"
     , "backbone": "*"

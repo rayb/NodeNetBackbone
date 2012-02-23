@@ -1,13 +1,5 @@
 ﻿
-h1 XPatients V1 (Plain Jade):
-ul#registry_patients
-  each patient in registry_patients
-    p
-      li= patient.first_name
-p
-  a(href='/registry_patients/new') New
-
-h1 Patients V2 (Jade Partials):
+h1 Patients (via Jade Partials):
 ul#registry_patient
   each registry_patient in registry_patients
     include _registry_patient

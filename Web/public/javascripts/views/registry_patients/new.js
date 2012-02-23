@@ -24,10 +24,14 @@
 
     New.prototype.save = function(e) {
       var _this = this;
-      console.log("in report summary save");
       e.preventDefault();
       e.stopPropagation();
       this.options.model.unset("errors");
+      console.log("@options.model");
+      console.log(this.options.model);
+      console.log("e");
+      console.log(e);
+      console.log("in patient save" + JSON.stringify(this.options));
       return this.options.collection.create(this.options.model.toJSON(), {
         success: function(model) {
           _this.options.model = model;

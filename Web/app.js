@@ -36,7 +36,14 @@
   app.get("/", routes.index);
 
   app.get("/api/registry_patients", function(req, res) {
-    return res.json(registry_patients.all);
+    return registry_patients.list((function(content) {
+      return res.json(content);
+    }));
+  });
+
+  app.post("/api/registry_patients", function(req, res) {
+    console.log("in the api for post" + req);
+    return registry_patients.create(req.body.registry_patient);
   });
 
   app.get("/registry_patients", function(req, res) {

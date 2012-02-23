@@ -14,10 +14,14 @@ class NodeNetBackbone.Views.RegistryPatients.New extends Backbone.View
     )
 
   save: (e) ->
-    console.log "in report summary save"
     e.preventDefault()
     e.stopPropagation()
     @options.model.unset("errors")
+    console.log "@options.model"
+    console.log @options.model
+    console.log "e"
+    console.log e
+    console.log "in patient save" + JSON.stringify(@options)
 
     @options.collection.create(@options.model.toJSON(),
       success: (model) =>
