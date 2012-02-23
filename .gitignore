@@ -7,5 +7,4 @@
 node_modules/
 obj/
 Debug/
-*/obj/
-*/Debug/
+WebService/obj/Debug/
