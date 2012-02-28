@@ -23,9 +23,7 @@ namespace RegistryToolSvc
         // resource (old) http://www.codeproject.com/Articles/327420/WCF-REST-Service-with-JSON as a template
         // resource (old) http://msdn.microsoft.com/en-us/library/ee391967.aspx
 
-        [OperationContract]
-        [WebInvoke(Method = "GET", UriTemplate = "", RequestFormat = WebMessageFormat.Json,
-                   ResponseFormat = WebMessageFormat.Json)]
+        [WebInvoke(Method = "GET", UriTemplate = "", ResponseFormat = WebMessageFormat.Json)]
         // TODO: The default Linq way
         ////http://stackoverflow.com/questions/6834085/returning-datasets-from-linq-to-sql-in-a-rest-wcf-service
         public List<Patient> GetPatients()
@@ -38,30 +36,6 @@ namespace RegistryToolSvc
             }
             return ret;
         }
-
-        // TODO: Using Javascript Serializer to send back custom data
-        //public string ListPatients()
-        //{
-        //    List<Patient> patients = new List<Patient>();
-        //    string json;
-        //    using (DataClasses1DataContext context = new DataClasses1DataContext())
-        //    {
-        //        var patientResults = from p in context.Patients
-        //                             select new { p.First, p.Last, p.DOB };
-        //        CustomTypeResolver resolver = new CustomTypeResolver();
-        //        JavaScriptSerializer jss = new JavaScriptSerializer();
-                
-
-        //        json = jss.Serialize(patientResults,
-        //    }
-        //    return json;
-        //}
-
-        ////http://stackoverflow.com/questions/6834085/returning-datasets-from-linq-to-sql-in-a-rest-wcf-service
-        //String connection = "Data Source=sql2k805.discountasp.net;Initial Catalog=SQL2008R2_838447_dataregistry;User ID=SQL2008R2_838447_dataregistry_user;Password=ssiq778";
-        //System.Data.SqlClient.SqlConnection  sqlconn = new System.Data.SqlClient.SqlConnection(connection);
-        //var MyDataContext = new DataContext(sqlconn);
-        
         
         [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "/foo", RequestFormat = WebMessageFormat.Json,
@@ -75,19 +49,26 @@ namespace RegistryToolSvc
                 };
         }
 
-        //[WebGet(UriTemplate = "", ResponseFormat = WebMessageFormat.Json)]
-        //public List<SampleItem> GetCollection()
-        //{
-        //    // TODO: Replace the current implementation to return a collection of SampleItem instances
-        //    return new List<SampleItem>() { new SampleItem() { Id = 1, StringValue = "Hello From List" } };
-        //}
+        //[OperationContract]
+        //[WebInvoke(
+        //  Method = "POST",
+        //  UriTemplate = "", 
+        //  BodyStyle = WebMessageBodyStyle.WrappedRequest,
+        //  RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        //[OperationContract]
+        //[WebInvoke(Method = "POST", UriTemplate = "", RequestFormat = WebMessageFormat.Json)]
 
         [WebInvoke(UriTemplate = "", Method = "POST")]
-        public SampleItem Create(SampleItem instance)
+        public long Create(string RegistryPatient)
         {
-            // TODO: Add the new instance of SampleItem to the collection
-            throw new NotImplementedException();
+            return 200;  
         }
+        //[WebInvoke(UriTemplate = "", Method = "POST")]
+        //public SampleItem Create(SampleItem instance)
+        //{
+        //    // TODO: Add the new instance of SampleItem to the collection
+        //    throw new NotImplementedException();
+        //}
 
         [WebGet(UriTemplate = "{id}")]
         public SampleItem Get(string id)
