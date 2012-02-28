@@ -42,8 +42,11 @@
   });
 
   app.post("/api/registry_patients", function(req, res) {
-    console.log("in the api for post" + req);
-    return registry_patients.create(req.body.registry_patient);
+    console.log("in the api for post");
+    console.log("req detail: " + JSON.stringify(req.body));
+    return registry_patients.create(JSON.stringify(req.body), function(content) {
+      return console.log("in the create repsonse");
+    });
   });
 
   app.get("/registry_patients", function(req, res) {

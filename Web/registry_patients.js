@@ -1,5 +1,5 @@
 (function() {
-  var http, registry_patients;
+  var http, options, registry_patients;
 
   http = require("http");
 
@@ -62,14 +62,15 @@
     return id;
   };
 
+  options = {
+    host: "10.0.2.19",
+    port: 4000,
+    path: "/RegistryPatient/"
+  };
+
   module.exports.list = function(callback) {
-    var options, req;
+    var req;
     console.log("in the registry patients list");
-    options = {
-      host: '10.0.2.7',
-      port: 4000,
-      path: "/RegistryPatient/"
-    };
     req = http.get(options, function(res) {
       var contents;
       contents = '';
@@ -96,6 +97,30 @@
     return req.on("error", function(e) {
       return console.log("Error: {e.message}");
     });
+  };
+
+  module.exports.create = function(registry_patient, callback) {
+    var poptions, req;
+    console.log("in the registry patients create" + JSON.stringify(registry_patient));
+    poptions = {
+      host: "10.0.2.19",
+      port: 4000,
+      path: "/RegistryPatient/",
+      method: "POST"
+    };
+    req = http.request(poptions, function(res) {
+      console.log("Status: " + res.statusCode);
+      console.log("Headers: " + JSON.stringify(res.headers));
+      res.setEncoding("utf8");
+      return res.on("data", function(chunk) {
+        return console.log("Body: " + chunk);
+      });
+    });
+    req.on("error", function(e) {
+      return console.log("problem with request: " + e.message);
+    });
+    req.write(JSON.stringify(registry_patient));
+    return req.end();
   };
 
 }).call(this);

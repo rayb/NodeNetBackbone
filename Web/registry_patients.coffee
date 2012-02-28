@@ -46,13 +46,32 @@ module.exports.insert = (registry_patient) ->
   registry_patients.push registry_patient
   id
 
+options =
+  host: "10.0.2.19"
+  port: 4000
+  path: "/RegistryPatient/"
+
+# req = http.request(options, (res) ->
+#   console.log "STATUS: " + res.statusCode
+#   console.log "HEADERS: " + JSON.stringify(res.headers)
+#   res.setEncoding "utf8"
+#   res.on "data", (chunk) ->
+#     console.log "BODY: " + chunk
+# )
+# req.on "error", (e) ->
+#   console.log "problem with request: " + e.message
+
+# req.write "data\n"
+# req.write "data\n"
+# req.end()
+
+
 module.exports.list = (callback) ->
   console.log "in the registry patients list"
-  options =
-    host: '10.0.2.7'
-    port: 4000
-    path: "/RegistryPatient/"
-  # TODO: pass in params
+  # options =
+    # host: '10.0.2.19'
+    # port: 4000
+    # path: "/RegistryPatient/"
   req = http.get options, (res) ->
     contents = ''
     res.on 'data', (chunk) ->
@@ -71,3 +90,26 @@ module.exports.list = (callback) ->
       callback (response_data)
   req.on "error", (e) ->
     console.log "Error: {e.message}"
+
+
+module.exports.create = (registry_patient, callback) ->
+  console.log "in the registry patients create" + JSON.stringify(registry_patient)
+  poptions =
+    host: "10.0.2.19"
+    port: 4000
+    path: "/RegistryPatient/"
+    method: "POST"
+
+  req = http.request(poptions, (res) ->
+    console.log "Status: " + res.statusCode
+    console.log "Headers: " + JSON.stringify(res.headers)
+    res.setEncoding "utf8"
+    res.on "data", (chunk) ->
+      console.log "Body: " + chunk
+  )
+
+  req.on "error", (e) ->
+    console.log "problem with request: " + e.message
+
+  req.write JSON.stringify(registry_patient)
+  req.end()
