@@ -31,8 +31,10 @@ app.get "/api/registry_patients", (req, res) ->
   )
 
 app.post "/api/registry_patients", (req, res) ->
-  console.log "in the api for post" + req
-  registry_patients.create(req.body.registry_patient)
+  console.log "in the api for post"
+  console.log "req detail: " + JSON.stringify(req.body)
+  registry_patients.create JSON.stringify(req.body), (content) ->
+    console.log "in the create repsonse"
 
 app.get "/registry_patients", (req, res) ->
   console.log "in the registry paitents index"

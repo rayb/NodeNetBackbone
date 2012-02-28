@@ -16,12 +16,17 @@ class NodeNetBackbone.Views.RegistryPatients.New extends Backbone.View
   save: (e) ->
     e.preventDefault()
     e.stopPropagation()
-    @options.model.unset("errors")
+    # @options.model.unset("errors")
     console.log "@options.model"
     console.log @options.model
     console.log "e"
     console.log e
     console.log "in patient save" + JSON.stringify(@options)
+    # attributes = name: $('#new_entry_name').val()
+    @options.model.set("first_name" : $('#first_name').val())
+    @options.model.set("last_name" : $('#last_name').val())
+
+    console.log "form field for first_name: " + $('#first_name').val()
 
     @options.collection.create(@options.model.toJSON(),
       success: (model) =>
@@ -33,7 +38,7 @@ class NodeNetBackbone.Views.RegistryPatients.New extends Backbone.View
     )
 
   render: ->
-    template_html = JST['registry_patients/new'](@model)
+    template_html = JST['registry_patients/new'](@options.model.toJSON())
     $(@el).html(template_html)
 
     # this.$("form").backboneLink(@options.model)

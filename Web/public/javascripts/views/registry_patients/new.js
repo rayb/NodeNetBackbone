@@ -26,12 +26,18 @@
       var _this = this;
       e.preventDefault();
       e.stopPropagation();
-      this.options.model.unset("errors");
       console.log("@options.model");
       console.log(this.options.model);
       console.log("e");
       console.log(e);
       console.log("in patient save" + JSON.stringify(this.options));
+      this.options.model.set({
+        "first_name": $('#first_name').val()
+      });
+      this.options.model.set({
+        "last_name": $('#last_name').val()
+      });
+      console.log("form field for first_name: " + $('#first_name').val());
       return this.options.collection.create(this.options.model.toJSON(), {
         success: function(model) {
           _this.options.model = model;
@@ -47,7 +53,7 @@
 
     New.prototype.render = function() {
       var template_html;
-      template_html = JST['registry_patients/new'](this.model);
+      template_html = JST['registry_patients/new'](this.options.model.toJSON());
       $(this.el).html(template_html);
       return this;
     };
